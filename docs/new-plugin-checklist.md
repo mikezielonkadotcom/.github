@@ -3,13 +3,13 @@
 This is the default checklist for *any new WordPress plugin repo* we create under the `mikezielonkadotcom` GitHub org.
 
 ## 1) Shared Update Machine updater (required)
-- [ ] Add build-time sync script: `scripts/sync-um-updater.sh`
-- [ ] Ensure release workflow runs sync step *before* packaging the zip
-- [ ] Pin updater ref (deterministic): `UM_UPDATER_REF=v1.0.0` (or latest tag)
+- [ ] Add `includes/um-updater.php` from a reviewed `dontpressthis/um-updater` release tag through an explicit plugin-repo PR
+- [ ] Record the approved SDK SHA-256 in package validation and verify both the source file and final ZIP copy
+- [ ] Ensure release workflows package the committed file and contain no private SDK fetch, sync-script call, or `UM_UPDATER_REF`
 - [ ] Confirm `.distignore` excludes `scripts/` so tooling does not ship in the release zip
-- [ ] Do **not** manually edit `includes/um-updater.php` — it is generated at build time
+- [ ] If the repo keeps `scripts/sync-um-updater.sh`, mark it as a manual maintainer helper for dedicated SDK-update PRs only
 
-**Source of truth:** <https://github.com/mikezielonkadotcom/um-updater>
+**Source of truth:** <https://github.com/dontpressthis/um-updater>
 
 ## 2) Release hygiene
 - [ ] `.distignore` exists and is correct (no dev junk in zip)
